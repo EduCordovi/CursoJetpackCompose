@@ -111,7 +111,7 @@ class MainActivity : ComponentActivity() {
                     }*/
 
                     Column() {
-                        BasicSlider()
+                        AdvanceSlider()
                     }
 
                 }
