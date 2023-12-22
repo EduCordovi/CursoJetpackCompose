@@ -111,12 +111,23 @@ class MainActivity : ComponentActivity() {
                     }*/
 
                     Column() {
-                        MyDropDownMenu()
+                        BasicSlider()
                     }
 
                 }
             }
         }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun DefaultPreview() {
+    JetpackCompiseCatalogoTheme {
+
+
+        MyDropDownMenu()
+
     }
 }
 
@@ -834,13 +845,3 @@ fun MyButtonExample() {
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    JetpackCompiseCatalogoTheme {
-
-
-        MyDropDownMenu()
-
-    }
-}
