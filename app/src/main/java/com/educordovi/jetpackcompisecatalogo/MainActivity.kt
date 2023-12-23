@@ -110,7 +110,11 @@ class MainActivity : ComponentActivity() {
                             MyCheckBoxWithTextCompleted(it)
                         }
                     }*/
+
+                    /*Seccion usada para la funcion MyDialog descomenta aca y lo veras
+
                     var show by remember { mutableStateOf(false) }
+
                     Box(modifier = Modifier.fillMaxSize()) {
                         Button(onClick = { show = true }) {
                             Text(text = "Mostrar Diálogo")
@@ -120,7 +124,22 @@ class MainActivity : ComponentActivity() {
                             show = show,
                             onDismis = { show = false },
                             onConfirm = { Log.i("EdCordovi", "Click") })
+                    }*/
+
+
+                    var show by remember { mutableStateOf(false) }
+                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                        Box(modifier = Modifier.fillMaxSize()) {
+                            Button(onClick = { show = true }) {
+                                Text(text = "Mostrar Diálogo")
+                            }
+
+                            MySimpleCustomDialopg(
+                                show = show,
+                                onDismis = { show = false })
+                        }
                     }
+
                     Column() {
 
                     }
