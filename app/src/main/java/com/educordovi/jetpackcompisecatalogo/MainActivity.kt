@@ -1,6 +1,7 @@
 package com.educordovi.jetpackcompisecatalogo
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.BorderStroke
@@ -109,9 +110,19 @@ class MainActivity : ComponentActivity() {
                             MyCheckBoxWithTextCompleted(it)
                         }
                     }*/
+                    var show by remember { mutableStateOf(false) }
+                    Box(modifier = Modifier.fillMaxSize()) {
+                        Button(onClick = { show = true }) {
+                            Text(text = "Mostrar Diálogo")
+                        }
 
+                        MyDialog(
+                            show = show,
+                            onDismis = { show = false },
+                            onConfirm = { Log.i("EdCordovi", "Click") })
+                    }
                     Column() {
-                        AdvanceSlider()
+
                     }
 
                 }
