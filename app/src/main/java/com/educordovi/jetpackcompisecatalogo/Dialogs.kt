@@ -42,9 +42,9 @@ fun MyCustomDialog(
                     .fillMaxWidth()
             ) {
                 MyTitleDialog("Set backup account", Color.Black)
-                AccountItem(email = "Ejemplo1@gmail.com", drawable = R.drawable.baseline_face_6_24)
-                AccountItem(email = "Ejemplo2@gmail.com", drawable = R.drawable.baseline_face_6_24)
-                AccountItem(email = "Añadir nueva cuenta", drawable = R.drawable.baseline_add_24)
+                AccountItem(email = "Ejemplo1@gmail.com", drawable = R.drawable.avatar)
+                AccountItem(email = "Ejemplo2@gmail.com", drawable = R.drawable.avatar)
+                AccountItem(email = "Añadir nueva cuenta", drawable = R.drawable.add)
             }
         }
     }
