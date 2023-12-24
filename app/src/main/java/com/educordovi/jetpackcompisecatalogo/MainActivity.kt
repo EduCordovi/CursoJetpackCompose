@@ -134,7 +134,7 @@ class MainActivity : ComponentActivity() {
                                 Text(text = "Mostrar Diálogo")
                             }
 
-                            MyCustomDialog(
+                            MyConfirmationDialog(
                                 show = show,
                                 onDismis = { show = false })
                         }
@@ -253,19 +253,19 @@ fun MyRadioButtonList(name: String, onItemSelected: (String) -> Unit) {
     Column(Modifier.fillMaxWidth()) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             RadioButton(selected = name == "Ejemplo 1", onClick = { onItemSelected("Ejemplo 1") })
-            Text("Ejemplo 1")
+            Text("Ejemplo 1", color = Color.Black)
         }
         Row(verticalAlignment = Alignment.CenterVertically) {
             RadioButton(selected = name == "Ejemplo 2", onClick = { onItemSelected("Ejemplo 2") })
-            Text("Ejemplo 2")
+            Text("Ejemplo 2", color = Color.Black)
         }
         Row(verticalAlignment = Alignment.CenterVertically) {
             RadioButton(selected = name == "Ejemplo 3", onClick = { onItemSelected("Ejemplo 3") })
-            Text("Ejemplo 3")
+            Text("Ejemplo 3", color = Color.Black)
         }
         Row(verticalAlignment = Alignment.CenterVertically) {
             RadioButton(selected = name == "Ejemplo 4", onClick = { onItemSelected("Ejemplo 4") })
-            Text("Ejemplo 4")
+            Text("Ejemplo 4", color = Color.Black)
         }
     }
 }
