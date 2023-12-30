@@ -92,8 +92,7 @@ class MainActivity : ComponentActivity() {
 
                 Surface(
                     modifier = Modifier
-                        .fillMaxSize()
-                        .verticalScroll(rememberScrollState()),
+                        .fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
 
@@ -147,8 +146,8 @@ class MainActivity : ComponentActivity() {
                         val darkTheme: Boolean = isSystemInDarkTheme()
                         RetoTwit(darkTheme)
                      */
-                    val darkTheme: Boolean = isSystemInDarkTheme()
-                    RetoTwit(darkTheme)
+
+                    SimpleRecyclerView()
 
                 }
             }
@@ -162,7 +161,7 @@ fun DefaultPreview() {
     JetpackCompiseCatalogoTheme {
 
 
-        MyDropDownMenu()
+        SuperHeroView()
 
     }
 }
