@@ -1,5 +1,6 @@
-package com.educordovi.jetpackcomposecatalogo
+package com.educordovi.jetpackcompisecatalogo
 
+import android.provider.SyncStateContract.Columns
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Slider
 import androidx.compose.material3.Text

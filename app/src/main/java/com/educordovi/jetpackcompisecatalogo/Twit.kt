@@ -1,4 +1,4 @@
-package com.educordovi.jetpackcomposecatalogo
+package com.educordovi.jetpackcompisecatalogo
 
 
 import androidx.compose.foundation.Image

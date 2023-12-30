@@ -1,4 +1,4 @@
-package com.educordovi.jetpackcomposecatalogo.ui.theme
+package com.educordovi.jetpackcompisecatalogo.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

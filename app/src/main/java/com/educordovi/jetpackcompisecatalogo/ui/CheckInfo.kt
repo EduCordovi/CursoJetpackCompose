@@ -1,4 +1,4 @@
-package com.educordovi.jetpackcomposecatalogo.ui
+package com.educordovi.jetpackcompisecatalogo.ui
 
 data class CheckInfo(
     val title: String,

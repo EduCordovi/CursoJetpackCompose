@@ -1,4 +1,4 @@
-package com.educordovi.jetpackcomposecatalogo.ui.theme
+package com.educordovi.jetpackcompisecatalogo.ui.theme
 
 import android.app.Activity
 import android.os.Build

@@ -1,4 +1,4 @@
-package com.educordovi.jetpackcomposecatalogo
+package com.educordovi.jetpackcompisecatalogo
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.BorderStroke
