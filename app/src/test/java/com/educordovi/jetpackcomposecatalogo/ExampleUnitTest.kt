@@ -1,4 +1,4 @@
-package com.educordovi.jetpackcompisecatalogo
+package com.educordovi.jetpackcomposecatalogo
 
 import org.junit.Test
 
