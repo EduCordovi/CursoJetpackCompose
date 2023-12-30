@@ -10,6 +10,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -91,7 +92,7 @@ class MainActivity : ComponentActivity() {
                 }
 
                 Surface(
-                    modifier = Modifier.fillMaxSize(),
+                    modifier = Modifier.fillMaxSize().verticalScroll(rememberScrollState()),
                     color = MaterialTheme.colorScheme.background
                 ) {
 
@@ -140,7 +141,13 @@ class MainActivity : ComponentActivity() {
                        }
                    }*/
 
-                   LoginScreen()
+                    /*
+                        Comentar  y descomentar esta seccion para ver la pantalla del reto Twit
+                        val darkTheme: Boolean = isSystemInDarkTheme()
+                        RetoTwit(darkTheme)
+                     */
+                    val darkTheme: Boolean = isSystemInDarkTheme()
+                    RetoTwit(darkTheme)
 
                }
            }
