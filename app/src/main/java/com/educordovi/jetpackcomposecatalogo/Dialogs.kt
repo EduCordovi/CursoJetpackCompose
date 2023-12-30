@@ -28,7 +28,6 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import androidx.compose.runtime.*
-import com.educordovi.jetpackcompisecatalogo.R
 
 @Composable
 fun MyConfirmationDialog(
