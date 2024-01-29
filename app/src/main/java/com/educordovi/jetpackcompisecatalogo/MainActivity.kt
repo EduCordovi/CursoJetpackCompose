@@ -2,6 +2,7 @@ package com.educordovi.jetpackcompisecatalogo
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.BorderStroke
@@ -22,6 +23,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
@@ -68,6 +72,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.state.ToggleableState
 import androidx.compose.ui.text.TextStyle
@@ -92,7 +97,7 @@ class MainActivity : ComponentActivity() {
                 }
 
                 Surface(
-                    modifier = Modifier.fillMaxSize().verticalScroll(rememberScrollState()),
+                    //modifier = Modifier.fillMaxSize().verticalScroll(rememberScrollState()),
                     color = MaterialTheme.colorScheme.background
                 ) {
 
@@ -146,8 +151,8 @@ class MainActivity : ComponentActivity() {
                         val darkTheme: Boolean = isSystemInDarkTheme()
                         RetoTwit(darkTheme)
                      */
-                    val darkTheme: Boolean = isSystemInDarkTheme()
-                    RetoTwit(darkTheme)
+
+                    SuperHeroGridView()
 
                }
            }
@@ -161,7 +166,7 @@ fun DefaultPreview() {
    JetpackCompiseCatalogoTheme {
 
 
-       MyDropDownMenu()
+       SimpleRecyclerView()
 
    }
 }
