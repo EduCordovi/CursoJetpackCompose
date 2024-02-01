@@ -16,9 +16,15 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -28,6 +34,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.educordovi.jetpackcompisecatalogo.model.SuperHero
+import kotlinx.coroutines.launch
 import kotlin.math.log
 
 @Composable
@@ -57,13 +64,13 @@ fun SuperHeroGridView() {
         verticalArrangement = Arrangement.spacedBy(8.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp),
         content = {
-        items(getSuperHeroes()) { superhero ->
-            ItemHero(superHero = superhero)
-            {
-                Toast.makeText(context, it.superheroName, Toast.LENGTH_SHORT).show()
+            items(getSuperHeroes()) { superhero ->
+                ItemHero(superHero = superhero)
+                {
+                    Toast.makeText(context, it.superheroName, Toast.LENGTH_SHORT).show()
+                }
             }
-        }
-    })
+        })
 
 }
 
@@ -83,12 +90,57 @@ fun SuperHeroView() {
 }
 
 @Composable
+fun SuperHeroWithSpecialControlsView() {
+    /*
+    * Este ejemplo permite controlar el desplazamiento
+    * el boton nos permite que pasado los items de la lista aparezca el boton con los estados y al presionar el boton te
+    * devuelve a la posicion de la lista que le indiques aca rvState.animateScrollToItem(0)
+    * */
+    val context = LocalContext.current
+    val rvState = rememberLazyListState()
+    val coroutinesScope = rememberCoroutineScope()
+    Column {
+        LazyColumn(
+            state = rvState,
+            verticalArrangement = Arrangement.spacedBy(8.dp),
+            modifier = Modifier.weight(1f)
+        ) {
+            items(getSuperHeroes()) { superhero ->
+                ItemHero(superHero = superhero)
+                {
+                    Toast.makeText(context, it.superheroName, Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+        val showbutton by remember {
+            derivedStateOf {
+                rvState.firstVisibleItemIndex > 0
+            }
+        }
+
+        rvState.firstVisibleItemScrollOffset
+        if (showbutton) {
+            Button(
+                onClick = {
+                    coroutinesScope.launch { rvState.animateScrollToItem(0) }
+                }, modifier = Modifier
+                    .align(Alignment.CenterHorizontally)
+                    .padding(16.dp)
+            ) {
+                Text("Soy un Boton cool")
+            }
+        }
+    }
+}
+
+@Composable
 fun ItemHero(superHero: SuperHero, onItemSelected: (SuperHero) -> Unit) {
     Card(
         border = BorderStroke(2.dp, Color.Red),
         modifier = Modifier
             .width(200.dp)
-            .clickable { onItemSelected(superHero) }.padding(top = 8.dp, bottom = 8.dp, end = 16.dp, start = 16.dp)) {
+            .clickable { onItemSelected(superHero) }
+            .padding(top = 8.dp, bottom = 8.dp, end = 16.dp, start = 16.dp)) {
         Column {
             Image(
                 painter = painterResource(id = superHero.photo),

@@ -152,7 +152,7 @@ class MainActivity : ComponentActivity() {
                         RetoTwit(darkTheme)
                      */
 
-                    SuperHeroGridView()
+                    SuperHeroWithSpecialControlsView()
 
                }
            }
@@ -166,7 +166,7 @@ fun DefaultPreview() {
    JetpackCompiseCatalogoTheme {
 
 
-       SimpleRecyclerView()
+       SuperHeroWithSpecialControlsView()
 
    }
 }
