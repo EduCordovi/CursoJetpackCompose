@@ -3,7 +3,9 @@ package com.educordovi.jetpackcompisecatalogo
 import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -89,6 +91,38 @@ fun SuperHeroView() {
     }
 }
 
+@OptIn(ExperimentalFoundationApi::class)
+@Composable
+fun SuperHeroStickyView() {
+
+    val context = LocalContext.current
+    val superhero: Map<String, List<SuperHero>> = getSuperHeroes().groupBy { it.publisher }
+    LazyColumn(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+        superhero.forEach { (publisher, mySuperHero) ->
+
+            stickyHeader {
+                Text(
+                    text = publisher,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(Color.Black),
+                    fontSize = 16.sp,
+                    color = Color.White
+                )
+            }
+
+            items(mySuperHero) { superhero ->
+                ItemHero(superHero = superhero)
+                {
+                    Toast.makeText(context, it.superheroName, Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+
+
+    }
+}
+
 @Composable
 fun SuperHeroWithSpecialControlsView() {
     /*
@@ -138,7 +172,7 @@ fun ItemHero(superHero: SuperHero, onItemSelected: (SuperHero) -> Unit) {
     Card(
         border = BorderStroke(2.dp, Color.Red),
         modifier = Modifier
-            .width(200.dp)
+            .fillMaxWidth()
             .clickable { onItemSelected(superHero) }
             .padding(top = 8.dp, bottom = 8.dp, end = 16.dp, start = 16.dp)) {
         Column {
