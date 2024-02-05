@@ -58,19 +58,36 @@ fun Screen3(navController: NavHostController) {
             .align(Alignment.Center)
             .clickable {
                 navController.navigate(
-                    "pantalla4/Eduardo"
+                    Routes.Pantalla4.createRoute(43)
                 )
             })
     }
 }
 
 @Composable
-fun Screen4(navController: NavHostController, name: String) {
+fun Screen4(navController: NavHostController, age: Int) {
     Box(
         modifier = Modifier
             .fillMaxSize()
             .background(Color.Yellow)
     ) {
-        Text(text = name, modifier = Modifier.align(Alignment.Center))
+        Text(text = "Tengo $age años", modifier = Modifier
+            .align(Alignment.Center)
+            .clickable {
+                navController.navigate(
+                    Routes.Pantalla5.createRoute("Eduardo")
+                )
+            })
+    }
+}
+
+@Composable
+fun Screen5(navController: NavHostController, name: String?) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.Green)
+    ) {
+        Text(text = "Me llamo $name", modifier = Modifier.align(Alignment.Center))
     }
 }

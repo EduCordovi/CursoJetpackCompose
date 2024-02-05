@@ -164,12 +164,21 @@ class MainActivity : ComponentActivity() {
                         composable(Routes.Pantalla2.route) { Screen2(navigationController) }
                         composable(Routes.Pantalla3.route) { Screen3(navigationController) }
                         composable(
-                            "pantalla4/{name}",
-                            arguments = listOf(navArgument("name") { type = NavType.StringType })
+                            Routes.Pantalla4.route,
+                            arguments = listOf(navArgument("age") { type = NavType.IntType })
                         ) { backStakEntry ->
                             Screen4(
                                 navigationController,
-                                backStakEntry.arguments?.getString("name").orEmpty()
+                                backStakEntry.arguments?.getInt("age") ?: 0
+                            )
+                        }
+                        composable(Routes.Pantalla5.route, arguments = listOf(navArgument("name") {
+                            defaultValue = ""
+                        }))
+                        { backStakEntry ->
+                            Screen5(
+                                navigationController,
+                                backStakEntry.arguments?.getString("name")
                             )
                         }
                     }
