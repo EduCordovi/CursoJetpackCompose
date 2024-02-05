@@ -22,7 +22,11 @@ fun Screen1(navController: NavHostController) {
             .fillMaxSize()
             .background(Color.Cyan)
     ) {
-        Text(text = "Pantalla 1", modifier = Modifier.align(Alignment.Center).clickable { navController.navigate(Pantalla2.route) })
+        Text(
+            text = "Pantalla 1",
+            modifier = Modifier
+                .align(Alignment.Center)
+                .clickable { navController.navigate(Pantalla2.route) })
     }
 }
 
@@ -33,8 +37,13 @@ fun Screen2(navController: NavHostController) {
             .fillMaxSize()
             .background(Color.Green)
     ) {
-        Text(text = "Pantalla 2", modifier = Modifier.align(Alignment.Center).clickable { navController.navigate(
-            Pantalla3.route) })
+        Text(text = "Pantalla 2", modifier = Modifier
+            .align(Alignment.Center)
+            .clickable {
+                navController.navigate(
+                    Pantalla3.route
+                )
+            })
     }
 }
 
@@ -45,6 +54,23 @@ fun Screen3(navController: NavHostController) {
             .fillMaxSize()
             .background(Color.Magenta)
     ) {
-        Text(text = "Pantalla 3", modifier = Modifier.align(Alignment.Center))
+        Text(text = "Pantalla 3", modifier = Modifier
+            .align(Alignment.Center)
+            .clickable {
+                navController.navigate(
+                    "pantalla4/Eduardo"
+                )
+            })
+    }
+}
+
+@Composable
+fun Screen4(navController: NavHostController, name: String) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.Yellow)
+    ) {
+        Text(text = name, modifier = Modifier.align(Alignment.Center))
     }
 }
