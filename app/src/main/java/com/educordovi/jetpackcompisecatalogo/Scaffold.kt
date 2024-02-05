@@ -14,13 +14,18 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Dangerous
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.FabPosition
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Snackbar
 import androidx.compose.material3.SnackbarHost
@@ -144,7 +149,8 @@ fun MyScaffoldTopBar() {
                 }
             )
         },
-        content = { }
+        content = { },
+        bottomBar = { MyBottomNavigation()}
     )
 }
 
@@ -180,4 +186,25 @@ fun MyTopAppBar(onClickIcon: (String) -> Unit) {
             }
         }
     )
+}
+
+@Composable
+fun MyBottomNavigation(){
+    var index by remember { mutableStateOf(0)}
+    NavigationBar(containerColor = Color.Red, contentColor = Color.White){
+        NavigationBarItem(selected = index == 0, onClick = { index = 0 }, icon = { Icon(
+            imageVector = Icons.Filled.Home,
+            contentDescription = "home"
+        ) }, label = { Text(text = "Home")})
+
+        NavigationBarItem(selected = index == 1, onClick = { index = 1 }, icon = { Icon(
+            imageVector = Icons.Filled.Favorite,
+            contentDescription = "fav"
+        ) }, label = { Text(text = "Favorite")})
+
+        NavigationBarItem(selected = index == 2, onClick = { index = 2 }, icon = { Icon(
+            imageVector = Icons.Filled.Person,
+            contentDescription = "person"
+        ) }, label = { Text(text = "Person")})
+    }
 }
