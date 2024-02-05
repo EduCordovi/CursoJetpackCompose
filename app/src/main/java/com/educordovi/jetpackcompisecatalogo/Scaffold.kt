@@ -22,6 +22,7 @@ import androidx.compose.material3.FabPosition
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Snackbar
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
@@ -124,15 +125,32 @@ fun ScaffoldWithSimpleSnackbar() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MyScaffoldTopBar() {
-    Scaffold(
-        topBar = { MyTopAppBar() },
+    val snackbarHostState = remember { SnackbarHostState() }
+    val coroutineScope = rememberCoroutineScope()
+    Scaffold(topBar = {
+        MyTopAppBar {
+            coroutineScope.launch { snackbarHostState.showSnackbar("Has pulsado $it") }
+        }
+    },
+        snackbarHost = {
+            SnackbarHost(
+                hostState = snackbarHostState,
+                snackbar = {
+                    Snackbar(
+                        snackbarData = it,
+                        containerColor = Color.LightGray,
+                        contentColor = Color.Blue
+                    )
+                }
+            )
+        },
         content = { }
     )
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MyTopAppBar() {
+fun MyTopAppBar(onClickIcon: (String) -> Unit) {
     TopAppBar(
         title = { Text(text = "Mi primera Tool Bar") },
         colors = TopAppBarDefaults.smallTopAppBarColors(
@@ -143,20 +161,20 @@ fun MyTopAppBar() {
         ),
         navigationIcon = {
             IconButton(
-                onClick = { /* "Open nav drawer" */ }
+                onClick = { onClickIcon("Back") }
             ) {
                 Icon(Icons.Filled.ArrowBack, contentDescription = "back")
             }
         },
         actions = {
             IconButton(
-                onClick = { /* "Open nav drawer" */ }
+                onClick = { onClickIcon("Search") }
             ) {
                 Icon(Icons.Filled.Search, contentDescription = "search")
             }
 
             IconButton(
-                onClick = { /* "Open nav drawer" */ }
+                onClick = { onClickIcon("Dangerous") }
             ) {
                 Icon(Icons.Filled.Dangerous, contentDescription = "dangerous")
             }
