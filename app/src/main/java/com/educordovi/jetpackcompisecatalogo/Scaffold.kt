@@ -7,11 +7,14 @@ import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Dangerous
 import androidx.compose.material.icons.filled.Favorite
@@ -22,6 +25,7 @@ import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.FabPosition
+import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.NavigationBar
@@ -132,11 +136,12 @@ fun ScaffoldWithSimpleSnackbar() {
 fun MyScaffoldTopBar() {
     val snackbarHostState = remember { SnackbarHostState() }
     val coroutineScope = rememberCoroutineScope()
-    Scaffold(topBar = {
-        MyTopAppBar {
-            coroutineScope.launch { snackbarHostState.showSnackbar("Has pulsado $it") }
-        }
-    },
+    Scaffold(
+        topBar = {
+            MyTopAppBar {
+                coroutineScope.launch { snackbarHostState.showSnackbar("Has pulsado $it") }
+            }
+        },
         snackbarHost = {
             SnackbarHost(
                 hostState = snackbarHostState,
@@ -150,8 +155,11 @@ fun MyScaffoldTopBar() {
             )
         },
         content = { },
-        bottomBar = { MyBottomNavigation()}
-    )
+        bottomBar = { MyBottomNavigation() },
+        floatingActionButton = { MyFAB() },
+        floatingActionButtonPosition = FabPosition.Center,
+
+        )
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -189,22 +197,44 @@ fun MyTopAppBar(onClickIcon: (String) -> Unit) {
 }
 
 @Composable
-fun MyBottomNavigation(){
-    var index by remember { mutableStateOf(0)}
-    NavigationBar(containerColor = Color.Red, contentColor = Color.White){
-        NavigationBarItem(selected = index == 0, onClick = { index = 0 }, icon = { Icon(
-            imageVector = Icons.Filled.Home,
-            contentDescription = "home"
-        ) }, label = { Text(text = "Home")})
+fun MyBottomNavigation() {
+    var index by remember { mutableStateOf(0) }
+    NavigationBar(containerColor = Color.Red, contentColor = Color.White) {
+        NavigationBarItem(selected = index == 0, onClick = { index = 0 }, icon = {
+            Icon(
+                imageVector = Icons.Filled.Home,
+                contentDescription = "home"
+            )
+        }, label = { Text(text = "Home") })
 
-        NavigationBarItem(selected = index == 1, onClick = { index = 1 }, icon = { Icon(
-            imageVector = Icons.Filled.Favorite,
-            contentDescription = "fav"
-        ) }, label = { Text(text = "Favorite")})
+        NavigationBarItem(selected = index == 1, onClick = { index = 1 }, icon = {
+            Icon(
+                imageVector = Icons.Filled.Favorite,
+                contentDescription = "fav"
+            )
+        }, label = { Text(text = "Favorite") })
 
-        NavigationBarItem(selected = index == 2, onClick = { index = 2 }, icon = { Icon(
-            imageVector = Icons.Filled.Person,
-            contentDescription = "person"
-        ) }, label = { Text(text = "Person")})
+        NavigationBarItem(selected = index == 2, onClick = { index = 2 }, icon = {
+            Icon(
+                imageVector = Icons.Filled.Person,
+                contentDescription = "person"
+            )
+        }, label = { Text(text = "Person") })
+    }
+}
+
+@Composable
+fun MyFAB() {
+    Box(modifier = Modifier)
+    FloatingActionButton(
+        onClick = { /*TODO*/ },
+        containerColor = Color.Yellow,
+        contentColor = Color.Black,
+        shape = CircleShape,
+        modifier = Modifier
+            .size(80.dp)
+            .offset(y = 50.dp)
+    ) {
+        Icon(imageVector = Icons.Filled.Add, contentDescription = "add")
     }
 }
