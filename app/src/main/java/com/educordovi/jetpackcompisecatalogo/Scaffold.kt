@@ -1,5 +1,6 @@
 package com.educordovi.jetpackcompisecatalogo
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.consumeWindowInsets
@@ -10,7 +11,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Dangerous
 import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.FabPosition
@@ -21,6 +26,7 @@ import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -34,7 +40,7 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ScaffoldExample(){
+fun ScaffoldExample() {
     val colors = listOf(
         Color(0xFFffd7d7.toInt()),
         Color(0xFFffe9d6.toInt()),
@@ -110,6 +116,50 @@ fun ScaffoldWithSimpleSnackbar() {
                     .fillMaxSize()
                     .wrapContentSize()
             )
+        }
+    )
+}
+
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun MyScaffoldTopBar() {
+    Scaffold(
+        topBar = { MyTopAppBar() },
+        content = { }
+    )
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun MyTopAppBar() {
+    TopAppBar(
+        title = { Text(text = "Mi primera Tool Bar") },
+        colors = TopAppBarDefaults.smallTopAppBarColors(
+            containerColor = Color.Red,
+            titleContentColor = Color.White,
+            navigationIconContentColor = Color.White,
+            actionIconContentColor = Color.White,
+        ),
+        navigationIcon = {
+            IconButton(
+                onClick = { /* "Open nav drawer" */ }
+            ) {
+                Icon(Icons.Filled.ArrowBack, contentDescription = "back")
+            }
+        },
+        actions = {
+            IconButton(
+                onClick = { /* "Open nav drawer" */ }
+            ) {
+                Icon(Icons.Filled.Search, contentDescription = "search")
+            }
+
+            IconButton(
+                onClick = { /* "Open nav drawer" */ }
+            ) {
+                Icon(Icons.Filled.Dangerous, contentDescription = "dangerous")
+            }
         }
     )
 }

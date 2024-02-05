@@ -153,7 +153,7 @@ class MainActivity : ComponentActivity() {
                         RetoTwit(darkTheme)
                      */
 
-                    ScaffoldExample()
+                    MyScaffoldTopBar()
 
                }
            }
@@ -167,7 +167,7 @@ fun DefaultPreview() {
    JetpackCompiseCatalogoTheme {
 
 
-       ScaffoldExample()
+       MyScaffoldTopBar()
 
    }
 }
