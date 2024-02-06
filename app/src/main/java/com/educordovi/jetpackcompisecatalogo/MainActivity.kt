@@ -74,14 +74,8 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavType
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
-import androidx.navigation.navArgument
-import com.educordovi.jetpackcompisecatalogo.login.LoginScreen
-import com.educordovi.jetpackcompisecatalogo.login.LoginViewModel
-import com.educordovi.jetpackcompisecatalogo.model.Routes
+import com.educordovi.jetpackcompisecatalogo.login.ui.LoginScreen
+import com.educordovi.jetpackcompisecatalogo.login.ui.LoginViewModel
 import com.educordovi.jetpackcompisecatalogo.ui.CheckInfo
 import com.educordovi.jetpackcompisecatalogo.ui.theme.JetpackCompiseCatalogoTheme
 

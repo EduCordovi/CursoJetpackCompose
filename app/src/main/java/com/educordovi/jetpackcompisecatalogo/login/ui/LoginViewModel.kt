@@ -1,4 +1,4 @@
-package com.educordovi.jetpackcompisecatalogo.login
+package com.educordovi.jetpackcompisecatalogo.login.ui
 
 import android.util.Patterns
 import androidx.lifecycle.LiveData
