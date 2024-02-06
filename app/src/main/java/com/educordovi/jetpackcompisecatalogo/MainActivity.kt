@@ -79,6 +79,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.educordovi.jetpackcompisecatalogo.login.LoginScreen
+import com.educordovi.jetpackcompisecatalogo.login.LoginViewModel
 import com.educordovi.jetpackcompisecatalogo.model.Routes
 import com.educordovi.jetpackcompisecatalogo.ui.CheckInfo
 import com.educordovi.jetpackcompisecatalogo.ui.theme.JetpackCompiseCatalogoTheme
@@ -99,7 +101,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
 
-
+                    LoginScreen(LoginViewModel())
                     /*Esta parte se necesita para la funcion MyTextField
                     * var myText by remember { mutableStateOf("Eduardo") }
                     * MyTextField(myText) {myText = it}
@@ -154,7 +156,7 @@ class MainActivity : ComponentActivity() {
                     /*Parte implementada para el Navigation.kt
                     link a usar para ejemplos de navegacion externa con intent podria cambiar en el futuro
                     * https://stackoverflow.com/questions/66940091/how-do-i-start-an-intent-inside-a-compose-functions-button-click
-                    * */
+                    *
                     val navigationController = rememberNavController()
                     NavHost(
                         navController = navigationController,
@@ -181,8 +183,8 @@ class MainActivity : ComponentActivity() {
                                 backStakEntry.arguments?.getString("name")
                             )
                         }
-                    }
-
+                    }*/
+                    /*Se finaliza Navegacion descomenta para visualizar */
 
                     //MyScaffoldTopBar()
 

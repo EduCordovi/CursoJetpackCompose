@@ -85,7 +85,5 @@ fun MyAllFloatingActionButton() {
         ExtendedFloatingActionButton(onClick = { print("hello") },
             text = { Text(text ="Extended FAB")},
             icon = {Icon(Icons.Filled.Favorite, "Floating Action Button Extended")})
-
-
     }
 }
