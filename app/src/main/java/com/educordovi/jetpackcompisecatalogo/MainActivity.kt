@@ -95,7 +95,8 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
 
-                    LoginScreen(LoginViewModel())
+                    CrossfadeExampleAnimation()
+                    //LoginScreen(LoginViewModel())
                     /*Esta parte se necesita para la funcion MyTextField
                     * var myText by remember { mutableStateOf("Eduardo") }
                     * MyTextField(myText) {myText = it}
